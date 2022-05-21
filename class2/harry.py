@@ -15,6 +15,10 @@ print(Implication(Not(rain), hagrid).formula())
 print('---/---/---/')
 
 #Knowledge
+
+#If it's not rainning then harry visited Harry
+#Harry visited harry or dumbledores
+#Harry Can't visited both Dumbledore and Hagrid
 knowledge = And(
     Implication(Not(rain), hagrid),
     Or(hagrid, dumbledore),

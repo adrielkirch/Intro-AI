@@ -1,32 +1,74 @@
 from logic import *
 
-A = Symbol("A")
-B = Symbol("B")
+a = Symbol("a")
+b = Symbol("b")
 
 # NOT
+print('Not')
+notSentence = Not(a).evaluate({'a':True})
+print(f'{Not(a).formula()} ({notSentence})')
 
-notSentence = Not(A)
-valueNotSentence = model_check(notSentence, Not(A))
+notSentence = Not(a).evaluate({'a':False})
+print(f'{Not(a).formula()} ({notSentence})')
 
-print(notSentence.formula() + f" ({valueNotSentence})")
-
-notSentence = Not(A)
-valueNotSentence = model_check(notSentence, A)
-
-print(notSentence.formula() + f" ({valueNotSentence})")
-print('---/---/---/')
-
+print('---/---/---')
 # AND
+print('And')
+andSentence = And(a, b).evaluate({'a':False,'b':False})
+print(f'{And(a, b).formula()} ({andSentence})')
 
-andSentence = And(A, B)
-valueAndSentence = model_check(andSentence, A)
-print(andSentence.formula() + f" ({valueAndSentence})")
-valueAndSentence = model_check(andSentence,  Not(B))
-print(andSentence.formula() + f" ({valueAndSentence})")
-print('---/---/---/')
+andSentence = And(a, b).evaluate({'a':False,'b':True})
+print(f'{And(a, b).formula()} ({andSentence})')
 
-# OR
+andSentence = And(a, b).evaluate({'a':True,'b':False})
+print(f'{And(a, b).formula()} ({andSentence})')
 
-orSentence = Or(A, B)
-valueOrSentence = model_check(orSentence, A)
-print(orSentence.formula() + f" ({valueOrSentence})")
+andSentence = And(a, b).evaluate({'a':True,'b':True})
+print(f'{And(a, b).formula()} ({andSentence})')
+
+print('---/---/---')
+
+print('Or')
+
+orSentence = Or(a, b).evaluate({'a':False,'b':False})
+print(f'{Or(a, b).formula()} ({orSentence})')
+
+orSentence = Or(a, b).evaluate({'a':False,'b':True})
+print(f'{Or(a, b).formula()} ({orSentence})')
+
+orSentence = Or(a, b).evaluate({'a':True,'b':False})
+print(f'{Or(a, b).formula()} ({orSentence})')
+
+orSentence = Or(a, b).evaluate({'a':True,'b':True})
+print(f'{Or(a, b).formula()} ({orSentence})')
+
+print('---/---/---')
+print('Implication')
+implication = Implication(a,b).evaluate({'a':False,'b':False})
+print(f'{Implication(a,b).formula()} ({implication})')
+
+implication = Implication(a,b).evaluate({'a':True,'b':False})
+print(f'{Implication(a,b).formula()} ({implication})')
+
+
+implication = Implication(a,b).evaluate({'a':False,'b':True})
+print(f'{Implication(a,b).formula()} ({implication})')
+
+implication = Implication(a,b).evaluate({'a':True,'b':True})
+print(f'{Implication(a,b).formula()} ({implication})')
+
+print('---/---/---')
+print('Biconditional')
+
+biconditional = Biconditional(a,b).evaluate({'a':False,'b':False})
+print(f'{Biconditional(a,b).formula()} ({biconditional})')
+
+biconditional = Biconditional(a,b).evaluate({'a':True,'b':False})
+print(f'{Biconditional(a,b).formula()} ({biconditional})')
+
+
+biconditional = Biconditional(a,b).evaluate({'a':False,'b':True})
+print(f'{Biconditional(a,b).formula()} ({biconditional})')
+
+biconditional = Biconditional(a,b).evaluate({'a':True,'b':True})
+print(f'{Biconditional(a,b).formula()} ({biconditional})')
